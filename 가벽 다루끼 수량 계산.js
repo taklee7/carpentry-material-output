@@ -10,7 +10,7 @@ function addRow() {
     var $room = document.getElementById("room");
     // $table element 찾기
 
-    if ($width.value == '' || $height.value == '') { alert('길이 및 수량을 입력 해주세여~') }
+    if ($width.value == '' || $height.value == '') { alert('가벽 규격을 입력 해주세여~') }
     else {
         let value_str = document.getElementById("inSelect");
         var p = value_str.options[value_str.selectedIndex];
