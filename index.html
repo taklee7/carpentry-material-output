@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>각재/석고 수량</title>
+</head>
+<link href="main.css" rel="stylesheet">
+<script type="text/javascript" src="가벽 다루끼 수량 계산.js"></script>
+
+<body>
+
+    <form action="" name="mForm">
+
+        <div class="container">
+            <div class="header">
+                <h2 style="margin: 10px">각재/석고 수량</h2>
+            </div class="name-background">
+
+                <div class="btnWrap">
+                    <div class="btnWrap-text">
+
+                    <label for="room" class="font-size">공간 : <input id="room" class="text-size" type="text" pattern="\d*" placeholder="공간 입력">&nbsp;&nbsp;<select class="p" id="inSelect">
+                        <option value="1">1p</option>
+                        <option value="2">2p</option>
+                    </select></label>
+                    <label for="width" class="font-sizew" >가벽 규격 </label>
+                    <label for="width" class="font-size" > <input id="width" autocomplete="off" class="text-size" type="number" pattern="\d*" placeholder="가로">X <input id="height" class="text-size"  type="number" pattern="\d*" placeholder="세로"></label>
+              
+                </div>
+                <br>
+                <div>
+
+                    <input class="main-button" type="button" value="추가" onclick="addRow()">
+                    <input class="main-button" type="button" style="float: right" value="삭제" onclick="deleteRow(-1)">
+                </div>
+            </div>
+            <div class="list-box">
+                <table class="list" id='fruits' border="1">
+                <tr>
+                    <th>공간</th><th>평수</th><th>p</th><th>석고</th><th>다루끼</th>
+                </tr>
+                
+              </table>
+            </div>
+
+            <div class="sub">
+                <label for="sum-pyeong" class="font-size">총 평수 : <div class="sum-text-size" id="sum-pyeong">&nbsp;&nbsp;&nbsp;평</div></label>
+                <label for="sum-gypsum" class="font-size">총 석고 : <div class="sum-text-size" id="sum-gypsum">&nbsp;&nbsp;&nbsp;장</div></label>
+                <label for="sum-gagjae" class="font-size">총 각재 : <div class="sum-text-size" id="sum-gagjae">&nbsp;&nbsp;&nbsp;개</div></label>
+                <input class="main-button" type="button" value="계산" onclick="sub()">
+                <input class="main-button" type="reset" style="float: right" onclick="window.location.reload()">
+            </div>
+        </div>
+    </form>
+    </body>
+</html>
