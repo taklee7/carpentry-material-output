@@ -1,4 +1,4 @@
-var num1 = [[0], [0],[0]];
+var num1 = [[0], [0],[0],[0]];
 var sub1 = 0;
 
 const inch = 1;
@@ -27,46 +27,51 @@ function addRow() {
         const newCell3 = newRow.insertCell(2);
         const newCell4 = newRow.insertCell(3);
         const newCell5 = newRow.insertCell(4);
+        const newCell6 = newRow.insertCell(5);
 
         const pyeong = Number($width.value * 0.001 * Number($height.value * 0.001));
-        var gypsum = pyeong / 1.62;
-        var gagjae = (gypsum * 3).toFixed(0);
-        var gagjae1 = pyeong.toFixed(1) * 5 -1 * 1.2;
+        var gypsum = Number((pyeong / 1.62*1.2).toFixed(0))+1*p.value;
+        var plywood = Number((pyeong / 2.88*1.2).toFixed(0))+1*p.value;
+        var gagjae = (gypsum * 2).toFixed(0);
 
-        num1[0].push(Number(pyeong*0.3));
-        num1[1].push(Math.ceil(gypsum));
-        num1[2].push(gagjae);
+        num1[0].push(Number(pyeong*0.33));
+        num1[1].push(gypsum);
+        num1[2].push(plywood);
+        num1[3].push(gagjae);
 
         // Cell에 텍스트 추가
         newCell1.innerText = $room.value;
-        newCell2.innerText = (pyeong*0.3).toFixed(1);
+        newCell2.innerText = (pyeong*0.33).toFixed(1);
+        newCell3.innerText = p.text;
         newCell4.innerText = num1[1].at(-1);
-       
-        
-        if (p.value == "1") {newCell3.innerText = p.text; newCell5.innerText = num1[2].at(-1);}
-        if (p.value == "2") {newCell3.innerText = p.text; newCell5.innerText = gagjae1;}
+        newCell5.innerText = num1[2].at(-1);
+       newCell6.innerText = num1[3].at(-1);
+        // if (p.value == "1") { }
+        // if (p.value == "2") {newCell3.innerText = p.text; newCell5.innerText = gagjae1;}
 
         $width.value = '';
         $height.value = '';
     }
 }
 function deleteRow(rownum) {
-    if (num1[0].length > 0) {
+    if (num1[0].length > 1) {
         // $table element 찾기
         const $table = document.getElementById('fruits');
 
         // 행(Row) 삭제
         const newRow = $table.deleteRow(rownum);
+        for (let i = 0; i < num1.length; i++) {
 
-        num1[0].pop();
-        num1[1].pop();
+        num1[i].pop();
     }
+}
 }
 function sub() {
      if (num1[0].length == 1) { alert('각재재단 할 목록을 추가 해주세여~') }
     else {
         let $sum_pyeong = document.getElementById('sum-pyeong');
         let $sum_gypsum = document.getElementById('sum-gypsum');
+        let $sum_plywood = document.getElementById('sum-plywood');
         let $sum_gagjae = document.getElementById('sum-gagjae');
 
         
@@ -74,18 +79,54 @@ function sub() {
         
         let sum = 0;
         let sum_gypsum = 0;
+        let sum_plywood = 0;
         let sum_gagjae = 0;
 
 for (let i = 1; i < num1[0].length; i++) {
     sum += num1[0][i];
     sum_gypsum+= Number($table.rows[i].cells[3].innerText);
-    sum_gagjae+= Number($table.rows[i].cells[4].innerText);
+    sum_plywood+= Number($table.rows[i].cells[4].innerText);
+    sum_gagjae+= Number($table.rows[i].cells[5].innerText);
 }
+let sum_gagjae1 = Math.ceil(sum_gagjae/12);
+
 $sum_pyeong.innerHTML=sum.toFixed(1)+'평';
 $sum_gypsum.innerHTML=sum_gypsum+'장';
-$sum_gagjae.innerHTML=sum_gagjae+'개';
+$sum_plywood.innerHTML=sum_plywood+'장';
+$sum_gagjae.innerHTML=sum_gagjae1+'단('+sum_gagjae+'개)';
     };
         
+}
+
+
+function tab(field, event) {
+
+    if (event.which == 13 /* IE9/Firefox/Chrome/Opera/Safari */ || event.keyCode == 13 /* IE8 and earlier */ ) {
+
+        for (i = 0; i < field.form.elements.length; i++) {
+
+            if (field.form.elements[i].tabIndex == field.tabIndex + 1) {
+
+                field.form.elements[i].focus();
+
+                if (field.form.elements[i].type == "text") {
+
+                    field.form.elements[i].select();
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+        return false;
+
+    }
+
+    return true;
+
 }
 
 function reset() {

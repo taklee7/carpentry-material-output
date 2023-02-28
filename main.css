@@ -9,7 +9,7 @@ body {
 }
 
 .font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
-    font-size: 30px;
+    font-size: 27px;
 }
     .profile {
     width: 100px;
@@ -112,12 +112,10 @@ th {
 }
 
 .font-size {
-    display: flex;
     margin: 10px;
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 20px;
-    width: 80%;
-    vertical-align:middle;
+    display: flex;
 }
 .font-sizew {
     margin: 10px;
@@ -125,8 +123,10 @@ th {
     width: 80%;
 }
 .sum-text-size {
-    width: 50%;
+    width: 20%;
     padding: 6px;
+    margin-left: 10px;
+    margin-right: 20px;
     background: white;
     border-radius: 5px;
 }
@@ -153,8 +153,20 @@ th {
 
 @media screen and (max-width: 1200px) {
     .container {
-        width: 650px;
-        height: 700px;
+        width: 700px;
+        height: 800px;
+    }
+    .font-size {
+        margin: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .sum-text-size {
+        margin-left: 15px;
+        margin-right: 20px;
+    }
+    .main-button {
+        width: 80px;
     }
 
     .font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
@@ -176,8 +188,22 @@ th {
 
 @media screen and (max-width: 576px) {
     .container {
-        width: 450px;
+        width: 500px;
         height: 700px;
+    }
+
+    .font-size {
+        margin: 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .sum-text-size {
+        margin-left: 5px;
+        margin-right: 20px;
+    }
+    .main-button {
+        width: 60px;
     }
 
     .font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
