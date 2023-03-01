@@ -54,7 +54,7 @@ body {
 }
 
 .header {
-    width: 75%;
+    width: 80%;
     padding: 1px;
     background: rgb(201, 255, 237);
     text-align: center;
@@ -62,7 +62,7 @@ body {
 }
 
 .btnWrap {
-    width: 75%;
+    width: 80%;
     padding: 1px;
     background: rgb(163, 192, 245);
     margin: auto;
@@ -79,7 +79,7 @@ body {
 }
 .list-box {
     overflow: scroll;
-    width: 75%;
+    width: 80%;
     height: 25%;
     background: #eee;
     margin: auto;
@@ -105,7 +105,7 @@ th {
     padding: 6px;
 }
 .sub {
-    width: 75%;
+    width: 80%;
     padding: 1px;
     background: rgb(184, 183, 183);
     margin: auto;
@@ -132,7 +132,7 @@ th {
 }
 
 .text-size {
-    width: 75%;
+    width: 80%;
     padding: 6px;
     flex: 1;
     border-radius: 5px;
