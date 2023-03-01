@@ -30,18 +30,19 @@ function addRow() {
         const newCell6 = newRow.insertCell(5);
 
         const pyeong = Number($width.value * 0.001 * Number($height.value * 0.001));
-        var gypsum = Number((pyeong / 1.62*1.2).toFixed(0))+1*p.value;
-        var plywood = Number((pyeong / 2.88*1.2).toFixed(0))+1*p.value;
-        var gagjae = (gypsum * 2).toFixed(0);
+        const pyeong1 = (pyeong*0.3).toFixed(1);
+        var gypsum = Number((pyeong1*2*1.2).toFixed(0))*p.value;
+        var plywood = Number((pyeong1*0.9*1.2).toFixed(0))*p.value;
+        var gagjae = Number((pyeong1*4*1.2)).toFixed(0);
 
-        num1[0].push(Number(pyeong*0.33));
+        num1[0].push(Number(pyeong*0.3));
         num1[1].push(gypsum);
         num1[2].push(plywood);
         num1[3].push(gagjae);
 
         // Cell에 텍스트 추가
         newCell1.innerText = $room.value;
-        newCell2.innerText = (pyeong*0.33).toFixed(1);
+        newCell2.innerText = (pyeong*0.3).toFixed(1);
         newCell3.innerText = p.text;
         newCell4.innerText = num1[1].at(-1);
         newCell5.innerText = num1[2].at(-1);
