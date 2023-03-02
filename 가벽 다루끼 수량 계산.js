@@ -1,8 +1,8 @@
 var num1 = [[0], [0],[0],[0]];
 var sub1 = 0;
 
-const inch = 1;
-const cm = 2.54;
+var inch = 1;
+var cm = 2.54;
 
 function addRow() {
     var $width = document.getElementById("width");
@@ -16,40 +16,47 @@ function addRow() {
         var p = value_str.options[value_str.selectedIndex];
 
         // $table element 찾기
-        const $table = document.getElementById('fruits');
+        var $table = document.getElementById('fruits');
 
         // 새 행(Row) 추가 (테이블 중간에)
-        const newRow = $table.insertRow();
+        var newRow = $table.insertRow();
 
         // 새 행(Row)에 Cell 추가
-        const newCell1 = newRow.insertCell(0);
-        const newCell2 = newRow.insertCell(1);
-        const newCell3 = newRow.insertCell(2);
-        const newCell4 = newRow.insertCell(3);
-        const newCell5 = newRow.insertCell(4);
-        const newCell6 = newRow.insertCell(5);
+        var newCell1 = newRow.insertCell(0);
+        var newCell2 = newRow.insertCell(1);
+        var newCell3 = newRow.insertCell(2);
+        var newCell4 = newRow.insertCell(3);
+        var newCell5 = newRow.insertCell(4);
+        var newCell6 = newRow.insertCell(5);
 
-        const pyeong = Number($width.value * 0.001 * Number($height.value * 0.001));
-        const pyeong1 = (pyeong*0.3).toFixed(1);
+        var pyeong = Number($width.value * 0.001 * Number($height.value * 0.001));
+        var pyeong1 = (pyeong*0.3).toFixed(1);
         var gypsum = Number((pyeong1*2*1.2).toFixed(0))*p.value;
-        var plywood = Number((pyeong1*0.9*1.2).toFixed(0))*p.value;
+        var plywood = Number((pyeong1*0.9*1.2).toFixed(0));
         var gagjae = Number((pyeong1*4*1.2)).toFixed(0);
 
         num1[0].push(Number(pyeong*0.3));
-        num1[1].push(gypsum);
-        num1[2].push(plywood);
-        num1[3].push(gagjae);
+       num1[1].push(gypsum);
+       num1[3].push(gagjae);
 
-        // Cell에 텍스트 추가
-        newCell1.innerText = $room.value;
-        newCell2.innerText = (pyeong*0.3).toFixed(1);
-        newCell3.innerText = p.text;
-        newCell4.innerText = num1[1].at(-1);
-        newCell5.innerText = num1[2].at(-1);
-       newCell6.innerText = num1[3].at(-1);
-        // if (p.value == "1") { }
+       // Cell에 텍스트 추가
+       newCell1.innerText = $room.value;
+       newCell2.innerText = (pyeong*0.3).toFixed(1);
+       newCell3.innerText = p.text;
+       newCell4.innerText = num1[1].at(-1);
+
+        if (p.value == "1") {
+       num1[2].push(plywood);
+       newCell5.innerText = num1[2].at(-1);
+        
+            };
+            if (p.value == "2") {
+                newCell5.innerHTML="<input class='list1' type='number' name='l1'>";
+            
+                };
+
+      newCell6.innerText = num1[3].at(-1);
         // if (p.value == "2") {newCell3.innerText = p.text; newCell5.innerText = gagjae1;}
-
         $width.value = '';
         $height.value = '';
     }
@@ -57,10 +64,10 @@ function addRow() {
 function deleteRow(rownum) {
     if (num1[0].length > 1) {
         // $table element 찾기
-        const $table = document.getElementById('fruits');
+        var $table = document.getElementById('fruits');
 
         // 행(Row) 삭제
-        const newRow = $table.deleteRow(rownum);
+        var newRow = $table.deleteRow(rownum);
         for (let i = 0; i < num1.length; i++) {
 
         num1[i].pop();
@@ -75,8 +82,8 @@ function sub() {
         let $sum_plywood = document.getElementById('sum-plywood');
         let $sum_gagjae = document.getElementById('sum-gagjae');
 
-        
-        const $table = document.getElementById('fruits');
+        var $table = document.getElementById('fruits');
+        var $newCell5s =document.getElementsByName('l1');
         
         let sum = 0;
         let sum_gypsum = 0;
@@ -84,10 +91,16 @@ function sub() {
         let sum_gagjae = 0;
 
 for (let i = 1; i < num1[0].length; i++) {
-    sum += num1[0][i];
+    sum += Number($table.rows[i].cells[1].innerText);
     sum_gypsum+= Number($table.rows[i].cells[3].innerText);
-    sum_plywood+= Number($table.rows[i].cells[4].innerText);
+
+    if($newCell5s.length>0){
+
+        num1[2].push($newCell5s[i-1].value);
+    };
+    sum_plywood+= Number( num1[2][i]);
     sum_gagjae+= Number($table.rows[i].cells[5].innerText);
+    
 }
 let sum_gagjae1 = Math.ceil(sum_gagjae/12);
 
