@@ -8,7 +8,7 @@ body {
     margin: 0px;
 }
 
-.font-size, .header, .p, .list, .list1, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
+.font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
     font-size: 27px;
 }
     .profile {
@@ -94,15 +94,6 @@ body {
     text-align: center;
     margin-top: 10px;
 }
-
-
-
-.list1 {
-    width: 20%;
-    background: white;
-    text-align: center;
-}
-
 
 table,
 td, th{
@@ -209,13 +200,13 @@ th {
     
     .sum-text-size {
         margin-left: 5px;
-        margin-right: 15px;
+        margin-right: 10px;
     }
     .main-button {
         width: 60px;
     }
 
-    .font-size, .header, .p, .list, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
+    .font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
         font-size: 14px;
     }
 }

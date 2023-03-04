@@ -1,13 +1,11 @@
-var num1 = [[0], [0],[0],[0]];
 var sub1 = 0;
-
 var inch = 1;
 var cm = 2.54;
 
 function addRow() {
-    var $width = document.getElementById("width");
-    var $height = document.getElementById("height");
-    var $room = document.getElementById("room");
+    const $width = document.getElementById("width");
+    const $height = document.getElementById("height");
+    const $room = document.getElementById("room");
     // $table element 찾기
 
     if ($width.value == '' || $height.value == '') { alert('가벽 규격을 입력 해주세여~') }
@@ -35,27 +33,21 @@ function addRow() {
         var plywood = Number((pyeong1*0.9*1.2).toFixed(0));
         var gagjae = Number((pyeong1*4*1.2)).toFixed(0);
 
-        num1[0].push(Number(pyeong*0.3));
-       num1[1].push(gypsum);
-       num1[3].push(gagjae);
-
        // Cell에 텍스트 추가
        newCell1.innerText = $room.value;
        newCell2.innerText = (pyeong*0.3).toFixed(1);
        newCell3.innerText = p.text;
-       newCell4.innerText = num1[1].at(-1);
+       newCell4.innerText = gypsum;
 
         if (p.value == "1") {
-       num1[2].push(plywood);
-       newCell5.innerText = num1[2].at(-1);
+       newCell5.innerText = plywood;
         
             };
             if (p.value == "2") {
-                newCell5.innerHTML="<input class='list1' type='number' name='l1'>";
-            
+                newCell5.innerHTML=0;
                 };
 
-      newCell6.innerText = num1[3].at(-1);
+      newCell6.innerText = gagjae;
         // if (p.value == "2") {newCell3.innerText = p.text; newCell5.innerText = gagjae1;}
         $width.value = '';
         $height.value = '';
@@ -75,72 +67,50 @@ function deleteRow(rownum) {
 }
 }
 function sub() {
-     if (num1[0].length == 1) { alert('각재재단 할 목록을 추가 해주세여~') }
+    var $rows = document.getElementById("fruits").getElementsByTagName("tr");
+    if ($rows.length == 0) { alert('목록을 추가 해주세여~') }
     else {
-        let $sum_pyeong = document.getElementById('sum-pyeong');
-        let $sum_gypsum = document.getElementById('sum-gypsum');
-        let $sum_plywood = document.getElementById('sum-plywood');
-        let $sum_gagjae = document.getElementById('sum-gagjae');
+        const $sum_pyeong = document.getElementById('sum-pyeong');
+        const $sum_gypsum = document.getElementById('sum-gypsum');
+        const $sum_plywood = document.getElementById('sum-plywood');
+        const $sum_gagjae = document.getElementById('sum-gagjae');
 
-        var $table = document.getElementById('fruits');
-        var $newCell5s =document.getElementsByName('l1');
-        
         let sum = 0;
         let sum_gypsum = 0;
         let sum_plywood = 0;
         let sum_gagjae = 0;
 
-for (let i = 1; i < num1[0].length; i++) {
-    sum += Number($table.rows[i].cells[1].innerText);
-    sum_gypsum+= Number($table.rows[i].cells[3].innerText);
+for (let i = 0; i < $rows.length; i++) {
+    sum += Number($rows[i].cells[1].innerText);
+    sum_gypsum+= Number($rows[i].cells[3].innerText);
+    sum_plywood+= Number($rows[i].cells[4].innerText);
+    sum_gagjae+= Number($rows[i].cells[5].innerText);
+};
 
-    if($newCell5s.length>0){
-
-        num1[2].push($newCell5s[i-1].value);
-    };
-    sum_plywood+= Number( num1[2][i]);
-    sum_gagjae+= Number($table.rows[i].cells[5].innerText);
-    
-}
 let sum_gagjae1 = Math.ceil(sum_gagjae/12);
 
-$sum_pyeong.innerHTML=sum.toFixed(1)+'평';
+$sum_pyeong.innerHTML=sum+'평';
 $sum_gypsum.innerHTML=sum_gypsum+'장';
 $sum_plywood.innerHTML=sum_plywood+'장';
 $sum_gagjae.innerHTML=sum_gagjae1+'단('+sum_gagjae+'개)';
     };
-        
 }
 
 
 function tab(field, event) {
-
     if (event.which == 13 /* IE9/Firefox/Chrome/Opera/Safari */ || event.keyCode == 13 /* IE8 and earlier */ ) {
-
         for (i = 0; i < field.form.elements.length; i++) {
-
             if (field.form.elements[i].tabIndex == field.tabIndex + 1) {
-
                 field.form.elements[i].focus();
-
                 if (field.form.elements[i].type == "text") {
-
                     field.form.elements[i].select();
-
                     break;
-
                 }
-
             }
-
         }
-
         return false;
-
     }
-
     return true;
-
 }
 
 function reset() {
@@ -150,5 +120,4 @@ function reset() {
         selEle.options.length = 0;
     }
     sub1 = 0;
-var num1 = [[0], [0],[0]];
 }

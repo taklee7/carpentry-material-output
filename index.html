@@ -9,6 +9,8 @@
 </head>
 <link href="main.css" rel="stylesheet">
 <script type="text/javascript" src="가벽 다루끼 수량 계산.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 
 <body>
 
@@ -38,12 +40,16 @@
                 </div>
             </div>
             <div class="list-box">
-                <table class="list" id='fruits' border="1">
-                <tr>
-                    <th>공간</th><th>평수</th><th>p</th><th>석고</th><th>합판</th><th>다루끼</th>
-                </tr>
-                
-              </table>
+                <table class="list">
+                    <thead>
+                        <tr>
+                            <th>공간</th><th>평수</th><th>p</th><th>석고</th><th>합판</th><th>다루끼</th>
+                        </tr>
+                    </thead>
+                    <tbody id='fruits' border="1">
+
+                    </tbody>
+                </table>
             </div>
 
             <div class="sub">
