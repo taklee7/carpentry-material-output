@@ -1,6 +1,9 @@
 var sub1 = 0;
+var sub2 = 0;
 var inch = 1;
 var cm = 2.54;
+var $table ;
+var $cells ;
 
 function addRow() {
     const $width = document.getElementById("width");
@@ -14,7 +17,7 @@ function addRow() {
         var p = value_str.options[value_str.selectedIndex];
 
         // $table element 찾기
-        var $table = document.getElementById('fruits');
+     $table = document.getElementById('fruits');
 
         // 새 행(Row) 추가 (테이블 중간에)
         var newRow = $table.insertRow();
@@ -51,22 +54,22 @@ function addRow() {
         // if (p.value == "2") {newCell3.innerText = p.text; newCell5.innerText = gagjae1;}
         $width.value = '';
         $height.value = '';
-    }
+        $room.value = '';
+ $cells = $table.getElementsByTagName('td');
+ list();
+}
 }
 function deleteRow(rownum) {
-    if (num1[0].length > 1) {
+    var $rows = document.getElementById("fruits").getElementsByTagName("tr");
+    if ($rows.length > 1) {
         // $table element 찾기
-        var $table = document.getElementById('fruits');
 
         // 행(Row) 삭제
         var newRow = $table.deleteRow(rownum);
-        for (let i = 0; i < num1.length; i++) {
-
-        num1[i].pop();
-    }
 }
 }
 function sub() {
+    var click=0
     var $rows = document.getElementById("fruits").getElementsByTagName("tr");
     if ($rows.length == 0) { alert('목록을 추가 해주세여~') }
     else {
@@ -93,13 +96,68 @@ $sum_pyeong.innerHTML=sum+'평';
 $sum_gypsum.innerHTML=sum_gypsum+'장';
 $sum_plywood.innerHTML=sum_plywood+'장';
 $sum_gagjae.innerHTML=sum_gagjae1+'단('+sum_gagjae+'개)';
-    };
+$cells= $table.getElementsByTagName('td');
+};
 }
 
+function list() {
+for (let i = 0; i < $cells.length; i++){
+    $cells[i].onclick = function(){
+if (this.hasAttribute('data-clicked')) {
+    return;
+}
+
+this.setAttribute('data-clicked', 'yes');
+this.setAttribute('data-text', this.innerHTML);
+
+        var $input = document.createElement('input');
+        $input.setAttribute('type', 'text');
+        $input.value = this.innerHTML;
+        $input.style.width = this.offsetWidth - (this.clientLeft *2) + "px";
+        $input.style.height = this.offsetHeight - (this.clientTop *2) + "px";
+        $input.style.border = "0px";
+        $input.style.fontFamily = "inherit";
+        $input.style.fontSize = "inherit";
+        $input.style.textAlign = "inherit";
+        $input.style.backgroundColor = "LightGoldenRodYellow";
+
+        $input.onblur = function() {
+            var td = $input.parentElement;
+            var orig_text = $input.parentElement.getAttribute('data-text');
+            var current_text = this.value;
+
+            if (orig_text != current_text) {
+                td.removeAttribute('data-clicked');
+                td.removeAttribute('data-text');
+                td.innerHTML = current_text;
+                td.style.cssText = 'padding: 5px';
+                console.log(orig_text + ' is changed to ' +current_text);
+            } else {
+                td.removeAttribute('data-clicked');
+                td.removeAttribute('data-text');
+                td.innerHTML = orig_text;
+                td.style.cssText = 'padding: 5px';
+console.log('no changed')
+            }
+        }
+
+        $input.onkeypress = function() {
+           if (event.keyCode == 13) {
+            this.blur();
+           }
+        }
+
+        this.innerHTML = '';
+        this.style.cssText = 'padding: 0px 0px';
+        this.append($input);
+        this.firstElementChild.select();
+    }
+}
+}
 
 function tab(field, event) {
     if (event.which == 13 /* IE9/Firefox/Chrome/Opera/Safari */ || event.keyCode == 13 /* IE8 and earlier */ ) {
-        for (i = 0; i < field.form.elements.length; i++) {
+    for (i = 0; i < field.form.elements.length; i++) {
             if (field.form.elements[i].tabIndex == field.tabIndex + 1) {
                 field.form.elements[i].focus();
                 if (field.form.elements[i].type == "text") {
@@ -108,7 +166,10 @@ function tab(field, event) {
                 }
             }
         }
-        return false;
+    const $height = document.getElementById("height");
+    if ($height.value != '') { addRow(); document.getElementById("room").focus();
+    }
+    return false;
     }
     return true;
 }

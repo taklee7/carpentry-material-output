@@ -14,8 +14,28 @@
 
 <body>
 
-    <form action="" name="mForm">
+    <form action="" name="mForm" id="mForm">
+<style>
+    
+table,
+td, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+tr:nth-child(even) {
+    background-color: #dddddddd;
+}
+th {
+    background-color: #5a5a5a;
+    color: white;
+}
 
+</style>
         <div class="container">
             <div class="header">
                 <h2 style="margin: 10px">각재/석고 수량</h2>
@@ -24,7 +44,7 @@
                 <div class="btnWrap">
                     <div class="btnWrap-text">
 
-                    <label for="room" class="font-size">공간 : <input id="room" class="text-size" type="text" tabindex="1" onkeydown="return tab(this, event)" pattern="\d*" placeholder="공간 입력">&nbsp;&nbsp;<select class="p" id="inSelect">
+                    <label for="room" class="font-size">공간 : <input id="room" class="text-size" type="text" tabindex="1" autofocus onkeydown="return tab(this, event)" pattern="\d*" placeholder="공간 입력">&nbsp;&nbsp;<select class="p" id="inSelect">
                         <option value="1">1p</option>
                         <option value="2">2p</option>
                     </select></label>
@@ -35,7 +55,7 @@
                 <br>
                 <div>
 
-                    <input class="main-button" type="button" tabindex="4" value="추가" onclick="addRow()">
+                    <input class="main-button" type="button" id="cu" tabindex="4" value="추가" onclick="addRow()">
                     <input class="main-button" type="button" style="float: right" value="삭제" onclick="deleteRow(-1)">
                 </div>
             </div>
