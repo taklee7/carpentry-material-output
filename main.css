@@ -10,6 +10,7 @@ body {
 
 .font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
     font-size: 27px;
+    font-weight: bold;
 }
     .profile {
     width: 100px;
@@ -216,6 +217,6 @@ th {
     }
 
     .font-size, .header, .p, .list, .font-sizew, .sum-text-size, .text-size, .sub, .font-size, .main-button {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
