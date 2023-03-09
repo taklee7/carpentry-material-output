@@ -15,27 +15,6 @@
 <body>
 
     <form action="" name="mForm" id="mForm">
-<style>
-    
-table,
-td, th{
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 5px;
-}
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-tr:nth-child(even) {
-    background-color: #dddddddd;
-}
-th {
-    background-color: #5a5a5a;
-    color: white;
-}
-
-</style>
         <div class="container">
             <div class="header">
                 <h2 style="margin: 10px">각재/석고 수량</h2>
@@ -50,12 +29,17 @@ th {
                     </select></label>
                     <label for="width" class="font-sizew" >가벽 규격 </label>
                     <label for="width" class="font-size" > <input id="width" autocomplete="off" class="text-size" type="number" tabindex="2" onkeydown="return tab(this, event)" pattern="\d*" placeholder="가로">X <input id="height" class="text-size"  type="number" tabindex="3" onkeydown="return tab(this, event)" pattern="\d*" placeholder="세로"></label>
-              
+                    <select class="p" id="Calculation">
+                        <option value="1">+</option>
+                    <option value="2">-</option>
+                </select>
+                <br>
+                 <input id="width1" class="text-size" style="width: 40%" type="number" tabindex="1" autofocus onkeydown="return tab(this, event)" pattern="\d*" placeholder="추가 가로 입력"> <input class="main-button" type="button" tabindex="2" value="계산" onClick="sum1()">
                 </div>
                 <br>
                 <div>
 
-                    <input class="main-button" type="button" id="cu" tabindex="4" value="추가" onclick="addRow()">
+                    <input class="main-button" style="width: 30%;" type="button" id="cu" tabindex="4" value="추가/변경" onclick="addRow()">
                     <input class="main-button" type="button" style="float: right" value="삭제" onclick="deleteRow(-1)">
                 </div>
             </div>
@@ -67,11 +51,11 @@ th {
                         </tr>
                     </thead>
                     <tbody id='fruits' border="1">
-
+                        
                     </tbody>
                 </table>
             </div>
-
+            
             <div class="sub">
                 <label for="sum-pyeong" class="font-size">총 평수 <div class="sum-text-size" id="sum-pyeong">&nbsp;&nbsp;&nbsp;평</div>총 석고 <div class="sum-text-size" id="sum-gypsum">&nbsp;&nbsp;&nbsp;장</div></label></label>
                 <label for="sum-plywood" class="font-size">총 합판 <div class="sum-text-size" id="sum-plywood">&nbsp;&nbsp;&nbsp;장</div>총 각재 <div class="sum-text-size" id="sum-gagjae">&nbsp;&nbsp;&nbsp;개</div></label></label>
