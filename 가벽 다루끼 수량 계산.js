@@ -3,7 +3,7 @@ var $cells;
 var listclick = 0
 
 function addRow() {
-    let click = 0
+    var click = 0
 
     const $width = document.getElementById("width");
     const $height = document.getElementById("height");
@@ -43,7 +43,7 @@ function addRow() {
         }
     }
 }
-       else if (click == 0 ) {
+       if (click == 0 ) {
             // $table element 찾기
             $table = document.getElementById('fruits');
 
